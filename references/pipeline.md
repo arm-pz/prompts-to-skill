@@ -12,14 +12,19 @@ Collect or infer, then confirm with the user:
 
 Use the conversation first. If the user's prompts already show the output format and steps, extract them and ask the user only for gaps.
 
-## Step 1: Draft with skill-creator
+## Step 1: Draft with draft-skill
 
-Invoke the `skill-creator` skill and follow its Write-the-SKILL.md and skill-writing-guide sections:
+Invoke `draft-skill` and follow its resource-planning and writing steps (4 through 6). Its steps 1 to 3 —
+concrete examples, the installed-set check, the boundary — are already settled by the prompt batch and the
+confirmations above, so don't re-ask the user for them. What its writing step gives you:
 
 - Frontmatter has `name` and `description`. The description says what the skill does and lists specific contexts, including phrasings the user did not use.
 - The body is imperative, explains why each rule matters, and uses examples where the output format matters.
 - SKILL.md stays under about 500 lines. Put detail in `references/` with a pointer that says when to read each file.
 - Scripts go in `scripts/` only for deterministic work.
+
+Its `references/structure.md` also carries the checks the validator can't make — chiefly whether the body
+keeps the promise the description made.
 
 Save to a folder named after the confirmed skill name, with the same `name` in frontmatter and as the H1 heading.
 
@@ -27,7 +32,7 @@ Save to a folder named after the confirmed skill name, with the same `name` in f
 
 Write two outputs.
 
-1. `evals/evals.json` in the skill-creator format: `skill_name` and an `evals` list of prompts. Assertions can come later.
+1. `evals/evals.json`: `skill_name` and an `evals` list of prompts. Assertions can come later.
 2. A test-case table following tune-skill's test-case reference. At least eight cases:
    - 3 clear triggers in the user's own words, without the skill name.
    - 2 implicit triggers that describe the outcome differently.

@@ -2,19 +2,20 @@
 
 An agent skill that turns a list of your own prompts into a finished, tested skill. You paste the
 prompts you keep reusing; it interviews you on intent, checks that no installed skill already covers
-them, drafts with `skill-creator`, writes trigger test cases, then hardens the draft with `tune-skill`
-and hands it to `findable` for naming and listing.
+them, drafts with [`draft-skill`](https://github.com/arm-pz/draft-skill), writes trigger test cases, then
+hardens the draft with `tune-skill` and hands it to `findable` for naming and listing.
 
 It is a fixed pipeline with two confirmation points and two pass/fail gates, so the output is a skill
 that actually fires on the phrasings you use — not a plausible-looking file.
 
-Works with Qoder, Claude Code and other agents that load skills. Needs `skill-creator` and `tune-skill`
+Works with Qoder, Claude Code and other agents that load skills. Needs `draft-skill` and `tune-skill`
 installed; it stops and says so if either is missing.
 
-**Heads up before you install:** install [`tune-skill`](https://github.com/arm-pz/tune-skill) too — Step
-3 runs its `check_skill.py`, and this repo does not carry it. `skill-creator` is still the gap: it is not
-published as an `arm-pz` repo and ships nowhere by default, so Step 1 cannot run on a machine that lacks
-it. Add it from wherever your agent gets its own skill-authoring tools.
+**Heads up before you install:** install
+[`tune-skill`](https://github.com/arm-pz/tune-skill) too — Step 3 runs its `check_skill.py`, and this repo
+does not carry it. Step 1 drafts with
+[`draft-skill`](https://github.com/arm-pz/draft-skill), which is published here as of 2026-10-19; until
+then that step named an authoring skill nobody could install.
 
 ## Install
 

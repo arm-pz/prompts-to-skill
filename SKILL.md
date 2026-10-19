@@ -1,6 +1,6 @@
 ---
 name: prompts-to-skill
-description: Turn a set of user-supplied prompts into a finished, tested agent skill. Runs an intent interview and overlap check, drafts with skill-creator, writes test cases, tunes with tune-skill, and optionally names and lists the repo with findable. Use whenever the user has a list of prompts, instructions, or example requests and wants them packaged as a reusable skill, even if they only say "make a skill from these", "turn these into a skill", or paste a batch of prompts with no further instruction. Not for editing an existing skill (use tune-skill), creating from a plain description with no prompts (use skill-creator), or finding existing skills for a task.
+description: Turn a set of user-supplied prompts into a finished, tested agent skill. Runs an intent interview and overlap check, drafts with draft-skill, writes test cases, tunes with tune-skill, and optionally names and lists the repo with findable. Use whenever the user has a list of prompts, instructions, or example requests and wants them packaged as a reusable skill, even if they only say "make a skill from these", "turn these into a skill", or paste a batch of prompts with no further instruction. Not for editing an existing skill (use tune-skill), creating a skill from a plain description with no prompts (use draft-skill), or finding existing skills for a task.
 ---
 
 # prompts-to-skill
@@ -9,7 +9,7 @@ This skill packages a set of prompts into a tested, tuned skill. It is a fixed p
 
 ## Dependencies
 
-This skill drives two other skills and needs them installed: `skill-creator` (drafting) and `tune-skill` (audit and validator, at https://github.com/arm-pz/tune-skill, installed with `npx skills add arm-pz/tune-skill --skill tune-skill`). Locate them by asking the agent to list its skills, or look in the skills directory it reads from. If either is missing, say so and stop rather than improvising their steps.
+This skill drives two other skills and needs them installed: `draft-skill` (drafting, at https://github.com/arm-pz/draft-skill, installed with `npx skills add arm-pz/draft-skill --skill draft-skill`) and `tune-skill` (audit and validator, at https://github.com/arm-pz/tune-skill, installed with `npx skills add arm-pz/tune-skill --skill tune-skill`). Locate them by asking the agent to list its skills, or look in the skills directory it reads from. If either is missing, say so and stop rather than improvising their steps.
 
 ## Before you start
 
@@ -20,9 +20,9 @@ This skill drives two other skills and needs them installed: `skill-creator` (dr
 
 ## Pipeline
 
-**Step 1 — Draft.** Invoke `skill-creator` on the confirmed intent and prompts. Use its anatomy and writing guide. Keep the description "pushy" enough to trigger on the user's own phrasing.
+**Step 1 — Draft.** Invoke `draft-skill` on the confirmed intent and prompts. Its resource-planning and writing steps apply; skip its intent and boundary steps, which the confirmations above already settled here. Keep the description "pushy" enough to trigger on the user's own phrasing.
 
-**Step 2 — Test cases.** Write at least eight cases in the format of tune-skill's test-case reference, plus an `evals/evals.json` in the skill-creator format. Show the list to the user and ask them to add or remove cases (point 2).
+**Step 2 — Test cases.** Write at least eight cases in the format of tune-skill's test-case reference, plus an `evals/evals.json` (`skill_name` and a list of prompts). Show the list to the user and ask them to add or remove cases (point 2).
 
 **Step 3 — Tune.** Follow tune-skill's workflow on the draft, then run its validator script against the folder and fix every FAIL. The script lives in tune-skill's own folder, not here.
 
