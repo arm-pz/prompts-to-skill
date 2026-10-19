@@ -14,8 +14,8 @@ installed; it stops and says so if either is missing.
 **Heads up before you install:** install
 [`tune-skill`](https://github.com/arm-pz/tune-skill) too — Step 3 runs its `check_skill.py`, and this repo
 does not carry it. Step 1 drafts with
-[`draft-skill`](https://github.com/arm-pz/draft-skill), which is published here as of 2026-10-19; until
-then that step named an authoring skill nobody could install.
+[`draft-skill`](https://github.com/arm-pz/draft-skill), this suite's own authoring skill; until it was
+written, that step named an authoring skill nobody could install.
 
 ## Install
 
