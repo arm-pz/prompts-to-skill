@@ -11,9 +11,10 @@ that actually fires on the phrasings you use — not a plausible-looking file.
 Works with Qoder, Claude Code and other agents that load skills. Needs `skill-creator` and `tune-skill`
 installed; it stops and says so if either is missing.
 
-**Heads up before you install:** neither `skill-creator` nor `tune-skill` is published as an `arm-pz`
-repo, so installing this one does not give you those two. They have to come from wherever your agent
-ships its own skill-authoring tools. Step 1 of this pipeline cannot run on a machine that lacks them.
+**Heads up before you install:** install [`tune-skill`](https://github.com/arm-pz/tune-skill) too — Step
+3 runs its `check_skill.py`, and this repo does not carry it. `skill-creator` is still the gap: it is not
+published as an `arm-pz` repo and ships nowhere by default, so Step 1 cannot run on a machine that lacks
+it. Add it from wherever your agent gets its own skill-authoring tools.
 
 ## Install
 

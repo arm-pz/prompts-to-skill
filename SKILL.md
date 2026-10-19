@@ -9,7 +9,7 @@ This skill packages a set of prompts into a tested, tuned skill. It is a fixed p
 
 ## Dependencies
 
-This skill drives two other skills and needs them installed: `skill-creator` (drafting) and `tune-skill` (audit and validator). Locate them by asking the agent to list its skills, or look in the skills directory it reads from. If either is missing, say so and stop rather than improvising their steps.
+This skill drives two other skills and needs them installed: `skill-creator` (drafting) and `tune-skill` (audit and validator, at https://github.com/arm-pz/tune-skill, installed with `npx skills add arm-pz/tune-skill --skill tune-skill`). Locate them by asking the agent to list its skills, or look in the skills directory it reads from. If either is missing, say so and stop rather than improvising their steps.
 
 ## Before you start
 
