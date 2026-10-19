@@ -1,0 +1,9 @@
+{
+  "name": "prompts-to-skill",
+  "version": "0.1.0",
+  "description": "Turns a list of your own prompts into a finished, tested agent skill: intent interview, overlap check against installed skills, draft with draft-skill, trigger test cases, tune-skill gate.",
+  "author": {
+    "name": "Abdul Rahman P Z"
+  },
+  "repository": "https://github.com/arm-pz/prompts-to-skill"
+}
