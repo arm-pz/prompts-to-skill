@@ -26,7 +26,7 @@ This skill drives two other skills and needs them installed: `draft-skill` (draf
 
 **Step 3 — Tune.** Follow tune-skill's workflow on the draft, then run its validator script against the folder and fix every FAIL. The script lives in tune-skill's own folder, not here.
 
-**Step 4 — Name and list (optional).** Only if the user plans to publish the skill to GitHub. Use `findable` (https://github.com/arm-pz/findable, installed with `npx skills add arm-pz/findable --skill findable`). It makes the repo name decision and drafts the listing. Its audit needs a live repo, so if none exists yet, record the audit as pending.
+**Step 4 — Name and list (optional).** Only if the user plans to publish the skill to GitHub. Use `findable` (https://github.com/arm-pz/findable, installed with `npx skills add arm-pz/findable --skill findable`). It makes the repo name decision and drafts the listing. Its audit needs a live repo, so if none exists yet, record the audit as pending. One owner per phase: listing copy is `findable`'s, packaging and the install checklist are `prompts-to-skill-release`'s, pushing an existing clone is `upstream-check`'s.
 
 ## Gates
 

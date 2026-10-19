@@ -43,13 +43,13 @@ skill folder plus the gate results, then `prompts-to-skill-release` (zip, tests 
 version, install checklist), then `findable` only if the user still wants listing work. Nothing
 should jump straight to release: its precondition 2 requires the recorded gates.
 
-## Recommended fixes, not applied
+## Fixes applied 2026-10-19
 
-- `skill-launch`'s description should say a prompt-list input goes to `prompts-to-skill`, and drop
-  the prompt list from its `argument-hint`, or own the whole batch path and name prompts-to-skill
-  as the implementer.
-- prompts-to-skill's step 4 should state that GitHub *listing* is findable's job while *release*
-  is prompts-to-skill-release's, so "publish" has one owner per phase.
+- `skill-launch` no longer claims the batch: its `argument-hint` is `[skill idea]`, its description
+  adds "not for a batch of prompts the user already wrote (use prompts-to-skill)", and its Phase 1
+  stops and hands over when the input is a prompt list.
+- Step 4 here now names one owner per phase: listing copy `findable`, packaging and install
+  checklist `prompts-to-skill-release`, pushing an existing clone `upstream-check`.
 
 ## Not verified
 
