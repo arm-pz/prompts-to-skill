@@ -11,6 +11,10 @@ that actually fires on the phrasings you use — not a plausible-looking file.
 Works with Qoder, Claude Code and other agents that load skills. Needs `skill-creator` and `tune-skill`
 installed; it stops and says so if either is missing.
 
+**Heads up before you install:** neither `skill-creator` nor `tune-skill` is published as an `arm-pz`
+repo, so installing this one does not give you those two. They have to come from wherever your agent
+ships its own skill-authoring tools. Step 1 of this pipeline cannot run on a machine that lacks them.
+
 ## Install
 
 ```
