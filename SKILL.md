@@ -1,6 +1,6 @@
 ---
 name: prompts-to-skill
-description: Turn a set of user-supplied prompts into a finished, tested agent skill. Runs an intent interview and overlap check, drafts with draft-skill, writes test cases, tunes with tune-skill, and optionally names and lists the repo with findable. Use whenever the user has a list of prompts, instructions, or example requests and wants them packaged as a reusable skill, even if they only say "make a skill from these", "turn these into a skill", or paste a batch of prompts with no further instruction. Not for editing an existing skill (use tune-skill), creating a skill from a plain description with no prompts (use draft-skill), or finding existing skills for a task.
+description: Turn a set of user-supplied prompts into a finished, tested agent skill. Runs an intent interview and overlap check, drafts with draft-skill, writes test cases, tunes with tune-skill, and optionally names and lists the repo with findable. Use whenever the user has a list of prompts, instructions, or example requests and wants them packaged as a reusable skill, even if they only say "make a skill from these", "turn these into a skill", or paste a batch of prompts with no further instruction. Not for prompts that are the steps of one multi-step job to split across several skills (use prompts-to-workflow), editing an existing skill (use tune-skill), creating a skill from a plain description with no prompts (use draft-skill), or finding existing skills for a task.
 ---
 
 # prompts-to-skill
@@ -13,10 +13,11 @@ This skill drives two other skills and needs them installed: `draft-skill` (draf
 
 ## Before you start
 
-1. **Check there are enough prompts.** Three or more is the minimum for a trigger and scope to be visible. With fewer, ask for more.
-2. **Screen the prompts.** Stop and tell the user if they ask for a skill that facilitates unauthorized access, data exfiltration, or malware, or if they contain personal data the skill would store. Skills must not surprise the user about what they do.
-3. **Find the overlap.** Search the installed skills for descriptions that already claim these requests. If one already does the job, tell the user and ask whether to tune it instead. Do not draft a duplicate.
-4. **Confirm intent (point 1).** Restate the purpose, the expected output format, and the trigger contexts in a few lines. Ask for confirmation. Do not draft until the user confirms.
+1. **Check there are enough prompts.** Three or more is the minimum for a trigger and scope to be visible. With fewer, ask for more. A brief from `prompts-to-workflow` is the exception: its trigger phrases and near-miss stand in for the missing prompts, and its chain check has already run, so skip step 2.
+2. **Check it is one skill, not a chain.** If each prompt consumes an earlier prompt's output (research, then draft, then check, then publish), the batch is a workflow, and packaging it here yields one skill doing several jobs. Hand it to `prompts-to-workflow`, which maps the chain and decides which steps are existing skills and which are new; it sends each new skill back here as a brief. If `prompts-to-workflow` is not installed, say so and ask whether to package the batch as one skill anyway.
+3. **Screen the prompts.** Stop and tell the user if they ask for a skill that facilitates unauthorized access, data exfiltration, or malware, or if they contain personal data the skill would store. Skills must not surprise the user about what they do.
+4. **Find the overlap.** Search the installed skills for descriptions that already claim these requests. If one already does the job, tell the user and ask whether to tune it instead. Do not draft a duplicate.
+5. **Confirm intent (point 1).** Restate the purpose, the expected output format, and the trigger contexts in a few lines. Ask for confirmation. Do not draft until the user confirms.
 
 ## Pipeline
 
