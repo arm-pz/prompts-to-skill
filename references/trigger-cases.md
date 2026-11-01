@@ -57,3 +57,27 @@ should jump straight to release: its precondition 2 requires the recorded gates.
   `arm-pz/tune-skill` were never run from a clean machine.
 - The <three-prompt guard, the safety screen, and the overlap check are written as instructions;
   no case above exercised them against a real agent.
+
+## Chain handoff cases (added 2026-11-01)
+
+Hand-checked against the descriptions of `prompts-to-skill` and `prompts-to-workflow` only; not run against an agent.
+
+| # | Message | Expected skill | Pass condition | Result |
+| --- | --- | --- | --- | --- |
+| 11 | Eight pasted brand prompts (strategy → palette → fonts → logo → templates → rulebook), "make a skill from these" | prompts-to-skill → prompts-to-workflow | Before-you-start step 2 spots the chain and hands over before the intent interview | written |
+| 12 | "Split these prompts into a workflow of skills" + prompts | prompts-to-workflow | prompts-to-skill does not load ("Not for prompts that are the steps of one multi-step job") | PASS by description review |
+| 13 | A `prompts-to-workflow` brief for `svg-logo-concepts` with one prompt attached | prompts-to-skill | the three-prompt guard accepts the brief; the chain check is skipped | written |
+| 14 | Five unrelated prompts pasted with no instruction | prompts-to-skill | no chain found; pipeline runs as before | written |
+
+Boundary pair:
+
+| Message | Should trigger | Why |
+| --- | --- | --- |
+| "These prompts do one job; make it a skill" | prompts-to-skill | one skill |
+| "These prompts are the steps of a bigger job; make it a skill" | prompts-to-workflow (via step 2 handoff if prompts-to-skill loads first) | a chain to split |
+
+## Fixes applied 2026-11-01
+
+- Description adds "Not for prompts that are the steps of one multi-step job to split across several skills (use prompts-to-workflow)".
+- Before you start gains step 2, a chain check that hands the batch to `prompts-to-workflow`, with a fallback when it is not installed.
+- The three-prompt guard accepts a `prompts-to-workflow` brief; `references/pipeline.md` says how to take a brief as the intent answers.

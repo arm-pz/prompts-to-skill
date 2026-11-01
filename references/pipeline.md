@@ -10,6 +10,8 @@ Collect or infer, then confirm with the user:
 - Whether the output is objectively checkable (file transforms, extraction, fixed steps) or subjective (writing style, art). Objective skills get more test cases.
 - Any dependencies, such as MCP servers or tools.
 
+If the input is a brief from `prompts-to-workflow`, it already carries the step it fills, what it receives and hands on, why nothing in the catalog covers it, trigger phrases, a near-miss and the original prompts. Take those as the draft answers and confirm them; do not re-run the split.
+
 Use the conversation first. If the user's prompts already show the output format and steps, extract them and ask the user only for gaps.
 
 ## Step 1: Draft with draft-skill

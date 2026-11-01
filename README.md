@@ -32,6 +32,10 @@ Code), then start a new session.
 - "Turn these instructions into a reusable skill."
 - "I have a batch of example requests, package them as one skill."
 
+If your prompts are the steps of one bigger job (research, then draft, then publish), it hands them to
+`prompts-to-workflow`, which splits the chain into skills you already have and new ones, and sends each new
+one back here as a brief.
+
 ## Sibling
 
 `arm-pz/prompts-to-skill-release` does the next step: packaging, versioning, README and install
