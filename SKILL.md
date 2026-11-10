@@ -14,27 +14,27 @@ This skill drives two other skills and needs them installed: `draft-skill` (draf
 
 ## Before you start
 
-1. **Check there are enough prompts.** Three or more is the minimum for a trigger and scope to be visible. With fewer, ask for more.
+1. **Check there are enough prompts.** Three or more is the minimum for a trigger and scope to be visible. With fewer, ask for more. If the user has only one long prompt or rule set and no more to give, hand it to `draft-skill`, which treats a single prompt as an idea.
 2. **Screen the prompts.** Stop and tell the user if they ask for a skill that facilitates unauthorized access, data exfiltration, or malware, or if they contain personal data the skill would store. Skills must not surprise the user about what they do.
 3. **Find the overlap.** Search the installed skills for descriptions that already claim these requests. If one already does the job, tell the user and ask whether to tune it instead. Do not draft a duplicate.
 4. **Confirm intent (point 1).** Restate the purpose, the expected output format, and the trigger contexts in a few lines. Ask for confirmation. Do not draft until the user confirms.
 
 ## Pipeline
 
-**Step 1 — Draft.** Invoke `draft-skill` on the confirmed intent and prompts. Its resource-planning and writing steps apply; skip its intent and boundary steps, which the confirmations above already settled here. Keep the description "pushy" enough to trigger on the user's own phrasing.
+**Step 1: Draft.** Invoke `draft-skill` on the confirmed intent and prompts. Its resource-planning and writing steps apply; skip its intent and boundary steps, which the confirmations above already settled here. Keep the description "pushy" enough to trigger on the user's own phrasing.
 
-**Step 2 — Test cases.** Write at least eight cases in the format of tune-skill's test-case reference, plus an `evals/evals.json` (`skill_name` and a list of prompts). Show the list to the user and ask them to add or remove cases (point 2).
+**Step 2: Test cases.** Write at least eight cases in the format of tune-skill's test-case reference and save them as `evals/trigger-cases.md`, plus an `evals/evals.json` (`skill_name` and a list of prompts). Show the list to the user and ask them to add or remove cases (point 2).
 
-**Step 3 — Tune.** Follow tune-skill's workflow on the draft, then run its validator script against the folder and fix every FAIL. The script lives in tune-skill's own folder, not here.
+**Step 3: Tune.** Follow tune-skill's workflow on the draft, then run its validator script against the folder and fix every FAIL. The script lives in tune-skill's own folder, not here.
 
-**Step 4 — Name and list (optional).** Only if the user plans to publish the skill to GitHub. Use `findable` (https://github.com/arm-pz/findable, installed with `npx skills add arm-pz/findable --skill findable`). It makes the repo name decision and drafts the listing. Its audit needs a live repo, so if none exists yet, record the audit as pending. One owner per phase: listing copy is `findable`'s, packaging and the install checklist are `prompts-to-skill-release`'s, pushing an existing clone is `upstream-check`'s.
+**Step 4: Name and list (optional).** Only if the user plans to publish the skill to GitHub. Use `findable` (https://github.com/arm-pz/findable, installed with `npx skills add arm-pz/findable --skill findable`). It makes the repo name decision and drafts the listing. Its audit needs a live repo, so if none exists yet, record the audit as pending. One owner per phase: listing copy is `findable`'s, packaging and the install checklist are `prompts-to-skill-release`'s, pushing an existing clone is `upstream-check`'s.
 
 ## Gates
 
 Do not report success until both gates pass. See `references/gates.md`.
 
-- **Gate A — structure:** tune-skill's validator reports no FAIL, the folder name, `name` field, and H1 match, and the description is under 1024 characters.
-- **Gate B — triggering:** every original prompt triggers the skill, and every test case has a recorded pass or fail. Cases that were written but not run are marked as such.
+- **Gate A, structure:** tune-skill's validator reports no FAIL, the folder name and `name` field are identical and the H1 matches them once lowercased and hyphenated, and the description is under 1024 characters.
+- **Gate B, triggering:** every original prompt triggers the skill, and every test case has a recorded pass or fail. Cases that were written but not run are marked as such.
 
 If a gate fails, fix it inside the pipeline and re-run it. If it still fails, stop and report the failing item. Do not hand back a skill that fails a gate.
 

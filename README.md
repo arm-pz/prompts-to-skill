@@ -6,13 +6,13 @@ them, drafts with [`draft-skill`](https://github.com/arm-pz/draft-skill), writes
 hardens the draft with `tune-skill` and hands it to `findable` for naming and listing.
 
 It is a fixed pipeline with two confirmation points and two pass/fail gates, so the output is a skill
-that actually fires on the phrasings you use — not a plausible-looking file.
+that actually fires on the phrasings you use, not a plausible-looking file.
 
 Works with Qoder, Claude Code and other agents that load skills. Needs `draft-skill` and `tune-skill`
 installed; it stops and says so if either is missing.
 
 **Heads up before you install:** install
-[`tune-skill`](https://github.com/arm-pz/tune-skill) too — Step 3 runs its `check_skill.py`, and this repo
+[`tune-skill`](https://github.com/arm-pz/tune-skill) too: Step 3 runs its `check_skill.py`, and this repo
 does not carry it. Step 1 drafts with
 [`draft-skill`](https://github.com/arm-pz/draft-skill), this suite's own authoring skill; until it was
 written, that step named an authoring skill nobody could install.
@@ -28,7 +28,7 @@ Code), then start a new session.
 
 ## Ask it things like
 
-- "Here are twelve prompts I keep pasting — make a skill out of them."
+- "Here are twelve prompts I keep pasting. Make a skill out of them."
 - "Turn these instructions into a reusable skill."
 - "I have a batch of example requests, package them as one skill."
 
@@ -43,6 +43,8 @@ edge-case polish of an existing skill belongs to `tune-skill`.
 ```
 prompts-to-skill/
 ├── SKILL.md
+├── evals/
+│   └── trigger-cases.md    # hand-run trigger cases
 └── references/
     ├── pipeline.md     # detail for each of the four steps
     └── gates.md        # pass/fail rules for Gate A and Gate B
@@ -51,7 +53,7 @@ prompts-to-skill/
 ## Status
 
 Built from the author's own prompt list on 2026-10-19. `SKILL.md` passes `tune-skill`'s validator with
-no FAIL. The skill's own trigger test cases have not been run in a live session — running them is
+no FAIL. The skill's own trigger test cases have not been run in a live session; running them is
 step 1 of the sibling release skill, not something already claimed here.
 
 ## License

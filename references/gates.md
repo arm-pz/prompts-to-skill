@@ -4,7 +4,7 @@
 
 | Check | Pass condition |
 | --- | --- |
-| Folder and name | Folder name, frontmatter `name`, and H1 are identical, lowercase, hyphenated |
+| Folder and name | Folder name and frontmatter `name` are identical, lowercase, hyphenated. The H1 matches them once lowercased and hyphenated ("Draft skill" for `draft-skill`) |
 | Description length | Under 1024 characters; aim for 950 or less |
 | Trigger wording | Description says what it does and when to use it |
 | Boundary wording | Description has a "Not for" clause naming the owning sibling |
